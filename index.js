@@ -5,8 +5,24 @@ const sequelize = require('./src/database/database');
 const app = express();
 const routes = require('./src/routes/routes');
 
+
+
 //inicializa a aplicação
 app.use(express.json());
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
+  app.get('/sistema', function(req, res, next) {
+    // Handle the get for this route
+  });
+  
+  app.post('/sistema', function(req, res, next) {
+   // Handle the post for this route
+  });
 
 //URL base do sistema
 app.use('/sistema', routes);
